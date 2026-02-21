@@ -1,4 +1,4 @@
-# nexeder/skills
+# olion500/skills
 
 Language-agnostic functional programming skills for coding agents. Compatible with the [open agent skills ecosystem](https://github.com/vercel-labs/skills).
 
@@ -7,13 +7,13 @@ Inspired by [fp-ts-skills](https://github.com/whatiskadudoing/fp-ts-skills) but 
 ## Install
 
 ```bash
-npx skills add nexeder/skills
+npx skills add olion500/skills
 ```
 
 ## Install a specific skill
 
 ```bash
-npx skills add nexeder/skills --skill <skill-name>
+npx skills add olion500/skills --skill <skill-name>
 ```
 
 ## Available Skills
