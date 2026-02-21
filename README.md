@@ -1,16 +1,25 @@
 # olion500/skills
 
-Language-agnostic functional programming skills for coding agents. Compatible with the [open agent skills ecosystem](https://github.com/vercel-labs/skills).
+Language-agnostic functional programming skills for coding agents. Compatible with [Claude Code plugins](https://code.claude.com/docs/en/plugins) and the [open agent skills ecosystem](https://github.com/vercel-labs/skills).
 
 Inspired by [fp-ts-skills](https://github.com/whatiskadudoing/fp-ts-skills) but **not tied to any library or language**. Teaches FP patterns that work in TypeScript, Python, Go, Rust, Java, and more.
 
 ## Install
 
+### Claude Code (Plugin)
+
+```bash
+/plugin marketplace add olion500/skills
+/plugin install fp-skills@olion500-skills
+```
+
+### Vercel Skills
+
 ```bash
 npx skills add olion500/skills
 ```
 
-## Install a specific skill
+### Install a specific skill (Vercel)
 
 ```bash
 npx skills add olion500/skills --skill <skill-name>
@@ -51,6 +60,9 @@ npx skills add olion500/skills --skill <skill-name>
 
 ```
 skills/
+├── .claude-plugin/               Claude Code plugin
+│   ├── plugin.json
+│   └── marketplace.json
 ├── README.md
 └── skills/
     ├── functional-coding/         T1 — Foundation
