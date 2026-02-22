@@ -68,26 +68,20 @@ Inspired by [fp-ts-skills](https://github.com/whatiskadudoing/fp-ts-skills) but 
 
 ```
 skills/
-├── .claude-plugin/               Claude Code plugin
+├── .claude-plugin/
 │   ├── plugin.json
 │   └── marketplace.json
 ├── README.md
 └── skills/
-    ├── web-to-markdown/           Utility
-    │   └── SKILL.md
-    ├── functional-coding/         T1 — Foundation
-    │   ├── SKILL.md
-    │   └── references/
-    ├── fp-error-handling/         T2 — Core
-    │   └── SKILL.md
-    ├── fp-composition/            T2 — Core
-    │   └── SKILL.md
-    ├── fp-immutability/           T2 — Core
-    │   └── SKILL.md
-    ├── fp-async-patterns/         T3 — Advanced
-    │   └── SKILL.md
-    └── fp-architecture/           T3 — Advanced
-        └── SKILL.md
+    ├── fp-skills/skills/
+    │   ├── functional-coding/       T1 — Foundation
+    │   ├── fp-error-handling/       T2 — Core
+    │   ├── fp-composition/          T2 — Core
+    │   ├── fp-immutability/         T2 — Core
+    │   ├── fp-async-patterns/       T3 — Advanced
+    │   └── fp-architecture/         T3 — Advanced
+    └── utility/skills/
+        └── web-to-markdown/
 ```
 
 ## License

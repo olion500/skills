@@ -4,14 +4,20 @@
     "name": "olion500"
   },
   "metadata": {
-    "description": "Language-agnostic functional programming skills for Claude Code"
+    "description": "Agent skills for Claude Code"
   },
   "plugins": [
     {
       "name": "fp-skills",
-      "source": "./",
+      "source": "./skills/fp-skills/",
       "description": "6 tiered FP skills: pure functions, error handling, composition, immutability, async patterns, architecture",
       "version": "1.0.0"
+    },
+    {
+      "name": "utility",
+      "source": "./skills/utility/",
+      "description": "Utility skills: web-to-markdown and more",
+      "version": "0.1.0"
     }
   ]
 }
