@@ -1,8 +1,6 @@
 # olion500/skills
 
-Language-agnostic functional programming skills for coding agents. Compatible with [Claude Code plugins](https://code.claude.com/docs/en/plugins) and the [open agent skills ecosystem](https://github.com/vercel-labs/skills).
-
-Inspired by [fp-ts-skills](https://github.com/whatiskadudoing/fp-ts-skills) but **not tied to any library or language**. Teaches FP patterns that work in TypeScript, Python, Go, Rust, Java, and more.
+A collection of coding agent skills. Compatible with [Claude Code plugins](https://code.claude.com/docs/en/plugins) and the [open agent skills ecosystem](https://github.com/vercel-labs/skills).
 
 ## Install
 
@@ -27,13 +25,23 @@ npx skills add olion500/skills --skill <skill-name>
 
 ## Available Skills
 
-### Tier 1 — Foundation (always active, minimal tokens)
+### Utility
+
+| Skill | Description |
+|-------|-------------|
+| `web-to-markdown` | Convert web pages to clean Markdown via local `web2md` CLI (Puppeteer + Readability). Handles JS-rendered pages. |
+
+### Functional Programming
+
+Inspired by [fp-ts-skills](https://github.com/whatiskadudoing/fp-ts-skills) but **not tied to any library or language**. Teaches FP patterns that work in TypeScript, Python, Go, Rust, Java, and more.
+
+#### Tier 1 — Foundation (always active, minimal tokens)
 
 | Skill | Description |
 |-------|-------------|
 | `functional-coding` | Core FP defaults: pure functions, immutability, composition. Sets the baseline for all code generation. |
 
-### Tier 2 — Core Patterns (load on demand)
+#### Tier 2 — Core Patterns (load on demand)
 
 | Skill | Description |
 |-------|-------------|
@@ -41,7 +49,7 @@ npx skills add olion500/skills --skill <skill-name>
 | `fp-composition` | Currying, partial application, pipe/flow, data-last design, building reusable utilities. |
 | `fp-immutability` | Immutable update patterns, nested updates, lens patterns, readonly enforcement. |
 
-### Tier 3 — Advanced (opt-in)
+#### Tier 3 — Advanced (opt-in)
 
 | Skill | Description |
 |-------|-------------|
@@ -65,6 +73,8 @@ skills/
 │   └── marketplace.json
 ├── README.md
 └── skills/
+    ├── web-to-markdown/           Utility
+    │   └── SKILL.md
     ├── functional-coding/         T1 — Foundation
     │   ├── SKILL.md
     │   └── references/
