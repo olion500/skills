@@ -1,12 +1,12 @@
 {
-  "name": "fp-skills",
-  "version": "1.0.0",
-  "description": "Language-agnostic functional programming skills for coding agents. Pure functions, immutability, composition, error handling, and architecture patterns.",
+  "name": "olion500-skills",
+  "version": "1.1.0",
+  "description": "Agent skills: functional programming, utilities, and Slack tools for Claude Code",
   "author": {
     "name": "olion500"
   },
   "homepage": "https://github.com/olion500/skills",
   "repository": "https://github.com/olion500/skills",
   "license": "MIT",
-  "keywords": ["functional-programming", "fp", "composition", "immutability", "error-handling"]
+  "keywords": ["functional-programming", "fp", "slack", "search", "tools"]
 }

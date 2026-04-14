@@ -18,6 +18,12 @@
       "source": "./skills/utility/",
       "description": "Utility skills: web-to-markdown and more",
       "version": "0.1.0"
+    },
+    {
+      "name": "slack-tools",
+      "source": "./skills/slack-tools/",
+      "description": "Slack search, thread reader, channel/user finder — MCP-free, Bun-based",
+      "version": "0.1.0"
     }
   ]
 }
