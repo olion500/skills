@@ -7,9 +7,9 @@
  *   in:channel, from:user, before/after:YYYY-MM-DD, "exact phrase", has:link, is:thread
  */
 
-const token = process.env.SLACK_BOT_TOKEN;
+const token = process.env.SLACK_USER_TOKEN;
 if (!token) {
-  console.error("SLACK_BOT_TOKEN not set");
+  console.error("SLACK_USER_TOKEN not set");
   process.exit(1);
 }
 
