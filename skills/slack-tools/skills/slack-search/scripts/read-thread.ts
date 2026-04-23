@@ -8,9 +8,10 @@
  *   - Channel + ts:    C12345:1234567890.123456
  */
 
-const token = process.env.SLACK_BOT_TOKEN;
-if (!token) {
-  console.error("SLACK_BOT_TOKEN not set");
+const botToken = process.env.SLACK_BOT_TOKEN;
+const userToken = process.env.SLACK_USER_TOKEN;
+if (!botToken && !userToken) {
+  console.error("Neither SLACK_BOT_TOKEN nor SLACK_USER_TOKEN is set");
   process.exit(1);
 }
 
@@ -43,11 +44,20 @@ const params = new URLSearchParams({
   inclusive: "true",
 });
 
-const res = await fetch(`https://slack.com/api/conversations.replies?${params}`, {
-  headers: { Authorization: `Bearer ${token}` },
-});
+async function fetchReplies(token: string) {
+  const res = await fetch(`https://slack.com/api/conversations.replies?${params}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.json();
+}
 
-const data = await res.json();
+let data: any;
+
+if (userToken) {
+  data = await fetchReplies(userToken);
+} else {
+  data = await fetchReplies(botToken!);
+}
 
 if (!data.ok) {
   console.error(`Slack API error: ${data.error}`);
