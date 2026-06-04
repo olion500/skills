@@ -11,7 +11,7 @@ Search and query Elasticsearch data through Kibana API for cupixworks models.
 
 ```bash
 # Run with --help for all options
-npx -y bun ${SKILL_DIR}/scripts/search-kibana.ts --help
+npx -y bun ${SKILL_DIR}/scripts/search-kibana.ts -- --help
 ```
 
 ---

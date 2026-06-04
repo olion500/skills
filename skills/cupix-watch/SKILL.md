@@ -10,7 +10,7 @@ Search application logs from `watch.cupix.com` via script.
 **Script:** `${SKILL_DIR}/scripts/search-watch.ts`
 
 ```bash
-npx -y bun ${SKILL_DIR}/scripts/search-watch.ts [OPTIONS]
+npx -y bun ${SKILL_DIR}/scripts/search-watch.ts -- [OPTIONS]
 ```
 
 ## Approach
@@ -47,19 +47,19 @@ When results are zero → verify keyword with `--resolve` > widen time range > c
 
 ```bash
 # Search by service keyword (auto-resolves index + service filter)
-npx -y bun ${SKILL_DIR}/scripts/search-watch.ts --service skat -q "level:error" --time-from now-1h
+npx -y bun ${SKILL_DIR}/scripts/search-watch.ts -- --service skat -q "level:error" --time-from now-1h
 
 # Search API logs for specific capture
-npx -y bun ${SKILL_DIR}/scripts/search-watch.ts --service api -q "capture.id:69697" --time-from now-7d
+npx -y bun ${SKILL_DIR}/scripts/search-watch.ts -- --service api -q "capture.id:69697" --time-from now-7d
 
 # Search with explicit index and filters
-npx -y bun ${SKILL_DIR}/scripts/search-watch.ts -i logstash-processing* -F "service.keyword:cupixworks-captue-skatmaster-arm-instance" -F "level:error" --time-from now-1h
+npx -y bun ${SKILL_DIR}/scripts/search-watch.ts -- -i logstash-processing* -F "service.keyword:cupixworks-captue-skatmaster-arm-instance" -F "level:error" --time-from now-1h
 
 # Resolve a service keyword
-npx -y bun ${SKILL_DIR}/scripts/search-watch.ts --resolve skat
+npx -y bun ${SKILL_DIR}/scripts/search-watch.ts -- --resolve skat
 
 # List available services
-npx -y bun ${SKILL_DIR}/scripts/search-watch.ts --list-services
+npx -y bun ${SKILL_DIR}/scripts/search-watch.ts -- --list-services
 ```
 
 ## Options

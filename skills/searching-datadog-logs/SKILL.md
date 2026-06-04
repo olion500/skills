@@ -11,10 +11,10 @@ Search and analyze logs/metrics from Datadog for cupixworks services.
 
 ```bash
 # Logs — run with --help for all options
-npx -y bun ${SKILL_DIR}/scripts/search-logs.ts --help
+npx -y bun ${SKILL_DIR}/scripts/search-logs.ts -- --help
 
 # Metrics — run with --help for all options
-npx -y bun ${SKILL_DIR}/scripts/query-metrics.ts --help
+npx -y bun ${SKILL_DIR}/scripts/query-metrics.ts -- --help
 ```
 
 ---
