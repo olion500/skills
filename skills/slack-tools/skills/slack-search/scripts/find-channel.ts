@@ -4,9 +4,9 @@
  * Usage: bun run find-channel.ts <query>
  */
 
-const token = process.env.SLACK_BOT_TOKEN;
+const token = process.env.CLAUDE_PLUGIN_OPTION_SLACK_BOT_TOKEN || process.env.SLACK_BOT_TOKEN;
 if (!token) {
-  console.error("SLACK_BOT_TOKEN not set");
+  console.error("SLACK_BOT_TOKEN not set. Configure via plugin settings or set SLACK_BOT_TOKEN env var.");
   process.exit(1);
 }
 

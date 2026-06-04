@@ -9,7 +9,7 @@ Search Slack without MCP. Bun scripts call the Slack Web API directly.
 
 ## Prerequisites
 
-Two tokens must be set in the environment:
+Two tokens are needed. They are configured via **plugin settings** (stored in OS Keychain) when you enable the `olion500-skills` plugin. Alternatively, set environment variables directly:
 - `SLACK_USER_TOKEN` (`xoxp-...`) — required for message search (`search:read` scope)
 - `SLACK_BOT_TOKEN` (`xoxb-...`) — required for thread reading, channel/user lookup (`channels:read`, `groups:read`, `channels:history`, `groups:history`, `users:read`, `users:read.email`)
 

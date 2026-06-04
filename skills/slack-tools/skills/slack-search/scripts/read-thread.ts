@@ -8,10 +8,10 @@
  *   - Channel + ts:    C12345:1234567890.123456
  */
 
-const botToken = process.env.SLACK_BOT_TOKEN;
-const userToken = process.env.SLACK_USER_TOKEN;
+const botToken = process.env.CLAUDE_PLUGIN_OPTION_SLACK_BOT_TOKEN || process.env.SLACK_BOT_TOKEN;
+const userToken = process.env.CLAUDE_PLUGIN_OPTION_SLACK_USER_TOKEN || process.env.SLACK_USER_TOKEN;
 if (!botToken && !userToken) {
-  console.error("Neither SLACK_BOT_TOKEN nor SLACK_USER_TOKEN is set");
+  console.error("Neither SLACK_BOT_TOKEN nor SLACK_USER_TOKEN is set. Configure via plugin settings or set env vars.");
   process.exit(1);
 }
 

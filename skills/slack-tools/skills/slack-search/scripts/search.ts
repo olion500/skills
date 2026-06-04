@@ -7,9 +7,9 @@
  *   in:channel, from:user, before/after:YYYY-MM-DD, "exact phrase", has:link, is:thread
  */
 
-const token = process.env.SLACK_USER_TOKEN;
+const token = process.env.CLAUDE_PLUGIN_OPTION_SLACK_USER_TOKEN || process.env.SLACK_USER_TOKEN;
 if (!token) {
-  console.error("SLACK_USER_TOKEN not set");
+  console.error("SLACK_USER_TOKEN not set. Configure via plugin settings or set SLACK_USER_TOKEN env var.");
   process.exit(1);
 }
 
