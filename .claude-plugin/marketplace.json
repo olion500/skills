@@ -30,6 +30,30 @@
       "source": "./skills/jira/",
       "description": "Jira CLI wrapper — create, search, update, transition, link, comment on issues via REST API",
       "version": "0.1.0"
+    },
+    {
+      "name": "searching-datadog-logs",
+      "source": "./skills/searching-datadog-logs/",
+      "description": "Search Datadog logs and query metrics via API",
+      "version": "0.1.0"
+    },
+    {
+      "name": "searching-kibana",
+      "source": "./skills/searching-kibana/",
+      "description": "Search Elasticsearch/Kibana database models via curl API",
+      "version": "0.1.0"
+    },
+    {
+      "name": "cupix-watch",
+      "source": "./skills/cupix-watch/",
+      "description": "Search Cupix Watch (Kibana) application logs",
+      "version": "0.1.0"
+    },
+    {
+      "name": "azure-devops",
+      "source": "./skills/azure-devops/",
+      "description": "Access Azure DevOps PRs, builds, pipelines, releases via az CLI",
+      "version": "0.1.0"
     }
   ]
 }

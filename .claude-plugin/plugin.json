@@ -1,14 +1,14 @@
 {
   "name": "olion500-skills",
-  "version": "1.2.0",
-  "description": "Agent skills: functional programming, utilities, Slack tools, and Jira CLI for Claude Code",
+  "version": "1.3.0",
+  "description": "Agent skills: FP, Slack, Jira, Datadog, Kibana, Azure DevOps, and utilities for Claude Code",
   "author": {
     "name": "olion500"
   },
   "homepage": "https://github.com/olion500/skills",
   "repository": "https://github.com/olion500/skills",
   "license": "MIT",
-  "keywords": ["functional-programming", "fp", "slack", "jira", "search", "tools"],
+  "keywords": ["functional-programming", "fp", "slack", "jira", "datadog", "kibana", "azure-devops", "search", "tools"],
   "userConfig": {
     "slack_user_token": {
       "type": "string",
@@ -36,6 +36,29 @@
       "type": "string",
       "title": "Jira API Token",
       "description": "Atlassian API token",
+      "sensitive": true
+    },
+    "datadog_api_key": {
+      "type": "string",
+      "title": "Datadog API Key",
+      "description": "Datadog API key for log search and metrics",
+      "sensitive": true
+    },
+    "datadog_app_key": {
+      "type": "string",
+      "title": "Datadog App Key",
+      "description": "Datadog Application key",
+      "sensitive": true
+    },
+    "kibana_username": {
+      "type": "string",
+      "title": "Kibana Username",
+      "description": "Kibana/Elasticsearch username"
+    },
+    "kibana_password": {
+      "type": "string",
+      "title": "Kibana Password",
+      "description": "Kibana/Elasticsearch password",
       "sensitive": true
     }
   }
