@@ -28,13 +28,13 @@ JIRA_PARENT_EPIC=TSLA-12345  # Default parent epic
 All commands output JSON. The CLI path is relative to this skill:
 
 ```
-python3 ~/.claude/skills/jira/jira-cli.py <command> [args]
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" <command> [args]
 ```
 
 ### Get Issue
 
 ```bash
-python3 ~/.claude/skills/jira/jira-cli.py get-issue TSLA-12508
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" get-issue TSLA-12508
 ```
 
 Returns: key, summary, status, issue_type, priority, assignee, reporter, labels, description (ADF converted to markdown), issue links (with IDs), url.
@@ -42,7 +42,7 @@ Returns: key, summary, status, issue_type, priority, assignee, reporter, labels,
 ### Search (JQL)
 
 ```bash
-python3 ~/.claude/skills/jira/jira-cli.py search "project = TSLA AND status = 'To Do' ORDER BY created DESC" --limit 20
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" search "project = TSLA AND status = 'To Do' ORDER BY created DESC" --limit 20
 ```
 
 Options:
@@ -59,7 +59,7 @@ JQL examples:
 ### Create Issue
 
 ```bash
-python3 ~/.claude/skills/jira/jira-cli.py create-issue \
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" create-issue \
   --project TSLA \
   --summary "fix: error title" \
   --issue-type Bug \
@@ -74,7 +74,7 @@ Options:
 ### Update Issue
 
 ```bash
-python3 ~/.claude/skills/jira/jira-cli.py update-issue TSLA-12345 \
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" update-issue TSLA-12345 \
   --description-file report.md
 ```
 
@@ -87,10 +87,10 @@ Options:
 
 ```bash
 # List available transitions
-python3 ~/.claude/skills/jira/jira-cli.py get-transitions TSLA-12345
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" get-transitions TSLA-12345
 
 # Execute transition
-python3 ~/.claude/skills/jira/jira-cli.py transition TSLA-12345 --to "In Progress"
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" transition TSLA-12345 --to "In Progress"
 ```
 
 Transition name is case-insensitive. Use `get-transitions` first to see available options.
@@ -99,14 +99,14 @@ Transition name is case-insensitive. Use `get-transitions` first to see availabl
 
 ```bash
 # List available link types
-python3 ~/.claude/skills/jira/jira-cli.py get-link-types
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" get-link-types
 
 # Create link (inward "is blocked by" outward)
-python3 ~/.claude/skills/jira/jira-cli.py link-issue \
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" link-issue \
   --inward TSLA-100 --outward TSLA-200 --type "Blocks"
 
 # Remove link by ID (get ID from get-issue output)
-python3 ~/.claude/skills/jira/jira-cli.py remove-link 12345
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" remove-link 12345
 ```
 
 Link direction: `--inward` is the issue that receives the inward label (e.g. "is blocked by"), `--outward` gets the outward label (e.g. "blocks").
@@ -115,13 +115,13 @@ Link direction: `--inward` is the issue that receives the inward label (e.g. "is
 
 ```bash
 # Get all comments on an issue (newest first)
-python3 ~/.claude/skills/jira/jira-cli.py get-comments TSLA-12345
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" get-comments TSLA-12345
 
 # Get all comments with pagination
-python3 ~/.claude/skills/jira/jira-cli.py get-comments TSLA-12345 --limit 50 --start-at 0
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" get-comments TSLA-12345 --limit 50 --start-at 0
 
 # Get a specific comment by ID (e.g. from focusedCommentId URL param)
-python3 ~/.claude/skills/jira/jira-cli.py get-comment TSLA-12345 94811
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" get-comment TSLA-12345 94811
 ```
 
 Returns: id, author, created, updated, body (ADF converted to markdown).
@@ -131,7 +131,7 @@ When the user pastes a Jira URL with `?focusedCommentId=XXXXX`, extract the issu
 ### Add Remote Link (Web Link)
 
 ```bash
-python3 ~/.claude/skills/jira/jira-cli.py add-remote-link TSLA-12345 \
+python3 "$CLAUDE_PLUGIN_ROOT/skills/jira/jira-cli.py" add-remote-link TSLA-12345 \
   --url "https://example.com/report" \
   --title "RCA Report"
 ```

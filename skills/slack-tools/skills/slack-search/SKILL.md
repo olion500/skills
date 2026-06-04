@@ -20,7 +20,7 @@ Two tokens are needed. They are configured via **plugin settings** (stored in OS
 Search messages across all channels. **Requires `SLACK_USER_TOKEN`.**
 
 ```bash
-bun run ~/nexeder/skills/skills/slack-tools/skills/slack-search/scripts/search.ts "<query>" [--count N]
+bun run $CLAUDE_PLUGIN_ROOT/skills/slack-tools/skills/slack-search/scripts/search.ts "<query>" [--count N]
 ```
 
 **Search modifiers** (combine freely):
@@ -41,7 +41,7 @@ bun run ~/nexeder/skills/skills/slack-tools/skills/slack-search/scripts/search.t
 Read all messages in a thread. Accepts a Slack link or channel:ts format. **Requires `SLACK_BOT_TOKEN`.**
 
 ```bash
-bun run ~/nexeder/skills/skills/slack-tools/skills/slack-search/scripts/read-thread.ts "<slack-link-or-channel:ts>"
+bun run $CLAUDE_PLUGIN_ROOT/skills/slack-tools/skills/slack-search/scripts/read-thread.ts "<slack-link-or-channel:ts>"
 ```
 
 **Examples:**
@@ -53,7 +53,7 @@ bun run ~/nexeder/skills/skills/slack-tools/skills/slack-search/scripts/read-thr
 Find channels by name, topic, or purpose. **Requires `SLACK_BOT_TOKEN`.**
 
 ```bash
-bun run ~/nexeder/skills/skills/slack-tools/skills/slack-search/scripts/find-channel.ts "<query>"
+bun run $CLAUDE_PLUGIN_ROOT/skills/slack-tools/skills/slack-search/scripts/find-channel.ts "<query>"
 ```
 
 ### 4. Find User
@@ -61,7 +61,7 @@ bun run ~/nexeder/skills/skills/slack-tools/skills/slack-search/scripts/find-cha
 Find users by name, email, or title. **Requires `SLACK_BOT_TOKEN`.**
 
 ```bash
-bun run ~/nexeder/skills/skills/slack-tools/skills/slack-search/scripts/find-user.ts "<query>"
+bun run $CLAUDE_PLUGIN_ROOT/skills/slack-tools/skills/slack-search/scripts/find-user.ts "<query>"
 ```
 
 ## Workflow
