@@ -54,6 +54,12 @@
       "source": "./skills/azure-devops/",
       "description": "Access Azure DevOps PRs, builds, pipelines, releases via az CLI",
       "version": "0.1.0"
+    },
+    {
+      "name": "git",
+      "source": "./skills/git/",
+      "description": "Git workflow skills: backmerge (git-flow master→develop with cherry-pick-aware conflict resolution) and more to come",
+      "version": "0.1.0"
     }
   ]
 }
