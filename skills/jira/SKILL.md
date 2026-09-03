@@ -21,6 +21,8 @@ Optional env vars:
 ```
 JIRA_ASSIGN_SELF=true        # Auto-assign to current user
 JIRA_PARENT_EPIC=TSLA-12345  # Default parent epic
+JIRA_SPRINT_BOARD=14         # Auto-add new issues to this board's active sprint
+JIRA_SPRINT_FIELD=customfield_10010  # Sprint field id, if yours differs
 ```
 
 ## Commands
@@ -70,6 +72,13 @@ Options:
 - `--description-file` — Read markdown from file (supports headings, code blocks, lists, bold, inline code, tables → ADF)
 - `--assignee-self` — Assign to current user
 - `--parent` — Parent epic key (overrides JIRA_PARENT_EPIC env)
+- `--sprint-board` — Board id; adds the issue to that board's latest active sprint (default `$JIRA_SPRINT_BOARD`; pass `0` to skip)
+- `--sprint-field` — Sprint custom field id (default `$JIRA_SPRINT_FIELD` or `customfield_10010`)
+
+Sprint selection filters by `originBoardId` first — `/board/{id}/sprint` also returns
+sprints owned by other boards whose issues match this board's filter — then picks the
+sprint that started last. When the board has no active sprint the issue is created
+without one.
 
 ### Update Issue
 

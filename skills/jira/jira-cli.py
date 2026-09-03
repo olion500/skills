@@ -17,6 +17,7 @@ Commands:
   add-remote-link  Add web link to issue
 
 Environment (.env): JIRA_URL, JIRA_USERNAME, JIRA_API_TOKEN
+Optional: JIRA_SPRINT_BOARD (auto-add new issues to that board's active sprint)
 """
 from __future__ import annotations
 
@@ -83,8 +84,9 @@ def _jira_url() -> str:
     return url.rstrip("/")
 
 
-def _request(method: str, path: str, data: dict | None = None, params: dict | None = None) -> dict:
-    url = f"{_jira_url()}/rest/api/3{path}"
+def _request(method: str, path: str, data: dict | None = None, params: dict | None = None,
+             base: str = "/rest/api/3") -> dict:
+    url = f"{_jira_url()}{base}{path}"
     if params:
         qs = "&".join(f"{k}={urllib.request.quote(str(v))}" for k, v in params.items() if v is not None)
         url = f"{url}?{qs}"
@@ -131,6 +133,28 @@ def _inline_md(text: str) -> list[dict]:
         else:
             nodes.append({"type": "text", "text": part})
     return nodes or [{"type": "text", "text": text}]
+
+
+def _pick_latest_sprint(sprints: list, board_id: int) -> int:
+    """Pick the latest active sprint that originates on board_id. 0 if none.
+
+    /board/{id}/sprint also returns sprints owned by OTHER boards whose issues match
+    this board's filter, so filter by originBoardId first. Among the board's own
+    sprints prefer the one that started last -- endDate is unreliable because a
+    slipping sprint gets extended past the sprint that succeeded it. startDate is
+    ISO-8601, so it sorts lexicographically.
+    """
+    own = [s for s in sprints if s.get("originBoardId") == board_id]
+    if not own:
+        return 0
+    return max(own, key=lambda s: (s.get("startDate") or "", s["id"]))["id"]
+
+
+def _latest_active_sprint_id(board_id: int) -> int:
+    """Return the board's latest active sprint id, or 0 if it has none."""
+    result = _request("GET", f"/board/{board_id}/sprint", params={"state": "active"},
+                      base="/rest/agile/1.0")
+    return _pick_latest_sprint(result.get("values", []), board_id)
 
 
 def _md_to_adf(md: str) -> dict:
@@ -365,6 +389,16 @@ def cmd_create_issue(args):
     if parent:
         payload["fields"]["parent"] = {"key": parent}
 
+    # Add to the board's latest active sprint. Best-effort: between sprints the board
+    # has none, and that must not block issue creation.
+    if args.sprint_board:
+        sprint_id = _latest_active_sprint_id(args.sprint_board)
+        if sprint_id:
+            payload["fields"][args.sprint_field] = sprint_id
+        else:
+            print(f"Warning: no active sprint on board {args.sprint_board}; "
+                  "creating issue without a sprint", file=sys.stderr)
+
     result = _request("POST", "/issue", payload)
     key = result.get("key", "")
     print(json.dumps({"key": key, "url": f"{_jira_url()}/browse/{key}"}))
@@ -596,6 +630,11 @@ def main():
     p.add_argument("--description-file", default="")
     p.add_argument("--assignee-self", action="store_true", default=False)
     p.add_argument("--parent", default="")
+    p.add_argument("--sprint-board", type=int, default=int(_env("JIRA_SPRINT_BOARD") or 0),
+                   help="Board id; adds issue to that board's latest active sprint "
+                        "(default: $JIRA_SPRINT_BOARD)")
+    p.add_argument("--sprint-field", default=_env("JIRA_SPRINT_FIELD") or "customfield_10010",
+                   help="Sprint custom field id (default: customfield_10010)")
     p.set_defaults(func=cmd_create_issue)
 
     # update-issue
